@@ -32,12 +32,14 @@ void Tri(reservation A[]);
 void Recherche(reservation A[]);
 void Statistique(reservation A[]);
 
+void Telephone(reservation A[]).
 void ID(reservation A[]);
 void Status(reservation A[]);
 void DATE(reservation A[]);
 void cpy(char A[] ,char B[]);
 int cmp(char A[] ,char B[]);
 int len(char A[]);
+void Test(reservation A[]);
 
 void Menu();
 int j=0;
@@ -57,58 +59,35 @@ int main()
         {
         case 1:
             Ajouter(patient);
+
             break;
-
-
-
-
-
         case 2:
             Mod_Sup(patient);
             break;
-
-
-
-
-
-
         case 3:
             Afficher(patient);
             break;
-
-
-
-
         case 4:
-            
+            Tri(patient);
             break;
-
-
-
-
         case 5:
-            
+            Recherche(patient);
             break;
-
         case 6:
-            
+            Statistique(patient)
             break;
-
         case 7:
             Menu();
             break;
-
         case 8:
             return 0;
             break;
-
         }
     } while (a1 != 0);
     
 
     return 0;
 }
-
 void Menu()
 {
     printf("--------------MENU--------------\n");
@@ -132,37 +111,8 @@ int Ajouter(reservation A[])
     printf("Prenom : ");
     scanf(" %[^\n]s",A[j].prenom);
 
-    // do
-    // {
-    //     printf("donner le nombre de telephone reel : ");
-    //     scanf("%s",b1);
-    //     for (int o = 0; o < 10; i++)
-    //     {
-    //         if (b1[o] < 48 || b1[o] > 57)
-    //         {
-    //             a = 0;
-    //             break;
-    //         }
-            
-    //     }
-    //     if(a != 0)
-    //     {
-    //         if ((b1[0] != '0') || ((b1[1] != '7') && (b[1] != '6') && (b1[1] != '5')))
-    //         {
-    //             a = 0;
-    //             break;
-    //         }
-    //         else if (len(b1) != 10)
-    //         {
-    //             a = 0;
-    //             break;
-    //         }
-    //         else 
-    //             cpy(A[j].telephone , b1);
-    //             a = 1;
-    //             break;
-    //     }
-    // } while (a == 0);
+    printf("Saisire le numero de telephone de patient : ");
+    Telephone(patient);
     printf("Age : ");
     scanf("%d",&A[j].age);
 
@@ -171,7 +121,6 @@ int Ajouter(reservation A[])
     DATE(A);
     j++;
 }
-
 int Mod_Sup(reservation A[])
 {
     char c[5],c1[n2],c2[n2],c3[11];
@@ -199,38 +148,9 @@ int Mod_Sup(reservation A[])
                     printf("Nouvelle prenom : ");
                     scanf(" %[^\n]s",c2);
                     cpy(A[i].prenom , c1);
-                    do
-                    {
-                        a = 1;
-                        printf("Nouvelle telephone reel : ");
-                        scanf("%s",c3);
-                        for (int o = 0; o < 10; i++)
-                        {
-                            if (c3[o] < 48 || c3[o] > 57)
-                            {
-                                a = 0;
-                                break;
-                            }
-                            
-                        }
-                        if(a != 0)
-                        {
-                            if ((c3[0] != '0') || ((c3[1] != '7') && (c3[1] != '6') && (c3[1] != '5')))
-                            {
-                                a = 0;
-                                break;
-                            }
-                            else if (len(c3) != 10)
-                            {
-                                a = 0;
-                                break;
-                            }
-                            else 
-                                cpy(A[i].telephone , c3);
-                        }
-                    } while (a == 0);
+                    printf("Saisire le nouveau numero de telephone de patient : ");
+                    Telephone(patient);
                     
-
                     printf("Nouvelle Age : ");
                     scanf("%d",&c4);
                     A[i].age = c4;
@@ -270,20 +190,19 @@ void Afficher(reservation A[])
     printf("+---+--------+-------------------+-------------------+--------------+-----+------------+----------------------------+\n");
     for (int i = 0; i < j; i++)
     {
-        printf("| %-2d |  %-5s     %-15s     %-15s     %-10s    %-2d     %-8s            %2d/%2d/%4d          \n"
+        printf("| %-2d| %-5s     %-15s     %-15s     %-10s    %-2d     %-8s            %2d/%2d/%4d          |\n"
             ,i+1,A[i].ID,A[i].nom,A[i].prenom,A[i].telephone,A[i].age,A[i].status,A[i].date.jour,A[i].date.mois,A[i].date.annee);
         printf("+-------------------------------------------------------------------------------------------------------------------+\n");
     }
 }
-
 void Tri(reservation A[])
 {
     reservation B;
     int c,a,b1,b2;
     printf("Les choix : \n");
-    printf("1.Tri des réservations par Nom.\n");
-    printf("2.Tri des réservations par date.\n");
-    printf("3.Tri des réservations par statut (valide, reporte, annule, traite).\n");
+    printf("1.Tri des reservations par Nom.\n");
+    printf("2.Tri des reservations par date.\n");
+    printf("3.Tri des reservations par statut (valide, reporte, annule, traite).\n");
     printf("Choisir votre choix : ");
     scanf("%d",&c);
     switch (c)
@@ -331,17 +250,16 @@ void Tri(reservation A[])
     }
     
 }
-
 void Recherche(reservation A[])
 {
     reservation B;
     char b1[5],b2[n2];
     int c1,c2,c3;
     int c,a;
-    printf("Les choix : \n");
+    printf("\tLes choix : \n");
     printf("1.Recherche d'une reservation par reference(ID).\n");
     printf("2.Recherche d'une reservation par nom.\n");
-    printf("3.Recherche d'une réservation par date.\n");
+    printf("3.Recherche d'une reservation par date.\n");
     printf("Choisir votre choix : ");
     scanf("%d",&c);
     switch (c)
@@ -429,13 +347,13 @@ void Recherche(reservation A[])
         break;
     }
 }
-
 void Statistique(reservation A[])
 {
-    int T[7] = {0,0,0,0,0,0,0};
-    float S;
+    int T[7];
+    int s=0;
     for (int i = 0; i < j; i++)
     {
+        s += A[i].age;
         if (A[i].age > 0 && A[i].age <= 18)
             T[0] += 1;
         else if (A[i].age >= 19 && A[i].age <= 35)
@@ -453,8 +371,7 @@ void Statistique(reservation A[])
         else 
             T[6] += 1;
     }
-    S = (T[0]+T[1]+T[2])/j;
-    printf("1.La moyenne d'age des patients ayant reserve est %d\n\n",S/j);
+    printf("1.La moyenne d'age des patients ayant reserve est %.2f\n\n",S/j);
     printf("2.Affichage le nombre de patients par tranche d'age :\n");
     printf("Les patient d'age entre 0 et 18 ans  : %d\n",T[0]);
     printf("Les patient d'age entre 19 et 35 ans : %d\n",T[1]);
@@ -467,6 +384,33 @@ void Statistique(reservation A[])
 
 }
 
+void Telephone(reservation A[])
+{
+    char b[11];
+    int a;
+    do
+    {
+        scanf("%s",b);
+        a = 1;
+        for (int o = 0; o < 10; o++)
+        {
+            if (b[o] < 48 || b[o] > 57)
+            {
+                printf("Le numero de telephone est invalide..Entrer un numero correcte : ");
+                a = 0;
+            }
+        }
+        if(a != 0)
+        {
+            if ((b[0] != '0') || ((b[1] != '7') && (b[1] != '6') && (b[1] != '5')) || (strlen(b) != 10))
+            {
+                a = 0;
+                printf("Le numero de telephone est invalide..Entrer un numero correcte : ");
+            }
+        }
+    } while (a == 0);
+    cpy(A.telephone , b1);
+}
 void Status(reservation A[])
 {
     int a;
@@ -494,7 +438,7 @@ void Status(reservation A[])
             cpy(A[j].status , "traite");
             break;
         default:
-            printf("Votre choix n'existe pas...Choix exacte : \n");
+            printf("Votre choix n'existe pas...Choix exacte : ");
             a = 0;
             break;
         }
@@ -583,8 +527,8 @@ void ID(reservation A[])
         a = 1;
         a1 = 'a' + rand() % 26;
         a2 = 'a' + rand() % 26;
-        a3 = '0' + rand() % 10;
-        a4 = '0' + rand() % 10;
+        a3 = '0' + rand() % 9;
+        a4 = '0' + rand() % 9;
         b[0] = a1;
         b[1] = a2;
         b[2] = a3;
@@ -641,9 +585,18 @@ int len(char A[])
     }
     return i;
 }
-
-
-
-
-
-
+void Test(reservation A[])
+{
+reservation liste[100] = {
+    {"Ahmed", "Benali", "0651234567", 30, "valide", "P01", "01-10-2024"},
+    {"Fatima", "El Amrani", "0652345678", 25, "reporte", "P02", "02-10-2024"},
+    {"Rachid", "Khalil", "0653456789", 45, "annule", "P03", "03-10-2024"},
+    {"Samira", "Safi", "0654567890", 60, "traite", "P04", "04-10-2024"},
+    {"Mouad", "El Ouardi", "0655678901", 22, "valide", "P05", "05-10-2024"},
+    {"Nadia", "Zahir", "0656789012", 33, "reporte", "P06", "06-10-2024"},
+    {"Omar", "Boussoufa", "0657890123", 27, "annule", "P07", "07-10-2024"},
+    {"Imane", "Mouhsine", "0658901234", 37, "traite", "P08", "08-10-2024"},
+    {"Youssef", "Tazi", "0659012345", 41, "valide", "P09", "09-10-2024"},
+    {"Hanan", "Ait Said", "0650123456", 29, "reporte", "P10", "10-10-2024"}
+};
+}
